@@ -12,7 +12,6 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css'>
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="bootstrap/js/extra.js"></script>
 </head>
 
 <body>
@@ -24,12 +23,10 @@
     </header>
     <section id="login">
         <h1 id="login">Login Required</h1>
-        <form id="form" action="PHP/signIn.php" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" name="u" id="username">
-            <label for="username">Password:</label>
-            <input type="password" name="p" id="password">
-            <input class="right" type="submit" value="login">
+        <form id="form" action="PHP/SignIn.php" method="POST">
+          Username: <input type="text" name="Username">
+          Password: <input type="text" name="Password">
+          <input type="submit">
         </form>
     </section>
 

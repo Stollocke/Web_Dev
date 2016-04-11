@@ -20,7 +20,9 @@ body{
 
 #login {
   margin: auto;
-  width: 50%;}
+  width: 50%;
+  text-align: vertical-align;
+}
 
 a#log_out{
   color: #FFFFFF;
@@ -76,4 +78,7 @@ li#search{
 
 div#ads{
   display: block;
+  float: right;
+  text-align: right;
+  margin-right: 30%;
 }
