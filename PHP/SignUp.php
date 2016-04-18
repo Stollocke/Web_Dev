@@ -8,12 +8,16 @@ if (mysqli_connect_errno())
 {
 	echo "Failed to connect: " .mysqli_connect_error();
 }
+session_start();
+$user = $_POST['Username'];
+$_SESSION["user"] = $user;
+$_SESSION["Connection"] = $conn;
 
-$sql="INSERT INTO Web_User (ID, Email, Balance, Ads_Uploaded, Ads_Purchased, Password, Username)
+$sql="INSERT INTO Web_User (Email, Password, Username)
   VALUES
-  ('$_POST[ID]','$_POST[Email]','$_POST[Balance]','$_POST[Ads_Uploaded]','$_POST[Ads_Purchased]','$_POST[Password]','$_POST[Username]')";
+  ('$_POST[Email]','$_POST[Password]','$_POST[Username]')";
 
-header('Location: ../index.html');
+header('Location: ../index.php');
 
 if (!mysqli_query($conn,$sql))
 {

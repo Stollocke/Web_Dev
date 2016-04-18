@@ -3,38 +3,42 @@ $dbhost = "lochnagar.abertay.ac.uk";
 $dbuser = "sql1304457";
 $dbpass = "QzBnw6uX4Za6";
 $dbname = "sql1304457";
-$conn = mysql_connect($dbhost, $dbuser, $dbpass, $dbname);
-ini_set("display_errors",1);
-ini_set("display_startup_errors", 1);
-error_reporting(E_ALL);
+$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 session_start();
-
 $user = $_POST['Username'];
 $pass = $_POST['Password'];
-
 $_SESSION["user"] = $user;
+$_SESSION["Connection"] = $conn;
 
-die(var_dump($_SESSION));
 
-// $sql="SELECT Username, Password FROM Web_User WHERE Username = '".$user"'";
-// $result = mysql_query($sql);
-// if($result == false)
-// {
-//   $sql="SELECT Password FROM Web_User WHERE Password = '".$pass."'")
-//   $result = mysql_query($sql);
-//     if($result == false)
-//     {
-//       header('Location: ../index.html');
-//     }
-//     else {
-//       var_dump($result);
-//     }
-// }
-// else {
-//   var_dump($result);
-// }
+$sql = "SELECT Username FROM Web_User WHERE Username = '$user'";
+$result = $conn->query($sql);
 
-mysql_close($conn);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+
+      if($row['Username'] == $user){
+
+        $sql = "SELECT Password FROM Web_User WHERE Username = '$user'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+
+          while($row = $result->fetch_assoc()) {
+
+            if($row['Password'] == $pass)
+            {
+              header('Location: ../index.php');
+            }
+          }
+        }
+    }
+  }
+}
+$conn->close();
 ?>

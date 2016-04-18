@@ -15,6 +15,7 @@
 <?php
 session_start();
 $_SESSION["user"] = $user;
+
 ?>
 </head>
 <header class="page-header" role="banner">
@@ -40,7 +41,9 @@ $_SESSION["user"] = $user;
 
   <section id="main-content">
 
-    <p>Welcome</p>
+    Add Balance: <input type="text" name="Balance">
+    <input type="submit">
+    <p id="balance"> Current Balance:<?php include('PHP/Balance_get.php'); ?></p>
 
   </section>
 

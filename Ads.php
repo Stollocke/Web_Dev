@@ -40,7 +40,15 @@ $_SESSION["user"] = $user;
 
   <section id="main-content">
 
-    <p>Welcome</p>
+    <div id="ads">
+    <a href="../Project/Pics/Eintracht.png" title="Eintracht" data-gallery="">
+    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
+    <a href="../Project/Pics/Bayern.png" title="Bayern" data-gallery="">
+    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
+    <a href="../Project/Pics/United.jpg" title="United" data-gallery="">
+    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
+    <a href="../Project/Pics/Crystal.jpg" title="Crystal" data-gallery="">
+    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
 
   </section>
 

@@ -13,13 +13,17 @@ if (mysqli_connect_errno())
 	echo "Failed to connect: " .mysqli_connect_error();
 }
 
-session_start();
-
+//session_start();
 
 $user = $_SESSION['user'];
-$sql="SELECT Balance FROM Web_User WHERE Username = '".$user."'";
+
+$sql="SELECT Balance FROM Web_User WHERE Username = '$user'";
 $result = mysqli_query($conn, $sql);
-$balance = mysqli_fetch_assoc($result);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+			$balance == $row['Balance'];
+			print $balance;
+		}
+}
 mysqli_close($conn);
-return $balance;
 ?>
