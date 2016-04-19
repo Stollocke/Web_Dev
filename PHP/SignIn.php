@@ -1,4 +1,9 @@
 <?php
+session_start();
+$user = $_POST['Username'];
+$pass = $_POST['Password'];
+$_SESSION["user"] = $user;
+$_SESSION["pass"] = $pass;
 $dbhost = "lochnagar.abertay.ac.uk";
 $dbuser = "sql1304457";
 $dbpass = "QzBnw6uX4Za6";
@@ -9,12 +14,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-session_start();
-$user = $_POST['Username'];
-$pass = $_POST['Password'];
-$_SESSION["user"] = $user;
-$_SESSION["Connection"] = $conn;
-
+$sql = "SELECT Email FROM Web_User WHERE Username = '$user'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      $mail = $row['Email'];
+      $_SESSION["mail"] = $mail;
+    }
+  }
 
 $sql = "SELECT Username FROM Web_User WHERE Username = '$user'";
 $result = $conn->query($sql);

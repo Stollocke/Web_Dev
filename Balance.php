@@ -1,3 +1,7 @@
+<?php
+session_start();
+include('PHP/Balance_get.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +16,9 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css'>
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<?php
-session_start();
-$_SESSION["user"] = $user;
-
-?>
 </head>
 <header class="page-header" role="banner">
-  <a id="log_out" href="login.html">
+  <a id="log_out" href="login.html" >
     <p>Logout</p>
   </a>
 </header>
@@ -40,10 +39,11 @@ $_SESSION["user"] = $user;
   </section>
 
   <section id="main-content">
-
-    Add Balance: <input type="text" name="Balance">
-    <input type="submit">
-    <p id="balance"> Current Balance:<?php include('PHP/Balance_get.php'); ?></p>
+    <form id="form" action="PHP/Balance_Add.php" method="POST">
+      Add Balance: <input type="text" name="Balance">
+      <input type="submit">
+    </form>
+    <p id="balance"> Current Balance: <?php echo $_SESSION['balance'] ?></p>
 
   </section>
 

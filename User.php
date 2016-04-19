@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +15,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css'>
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<?php
-session_start();
-$_SESSION["user"] = $user;
-?>
+
 </head>
 <header class="page-header" role="banner">
   <a id="log_out" href="login.html">
@@ -40,7 +40,11 @@ $_SESSION["user"] = $user;
 
   <section id="main-content">
 
-    <p>Welcome</p>
+    <p>Your Information</p>
+    <p>User Name: <?php echo $_SESSION["user"]; ?></p>
+    <p>Email: <?php echo $_SESSION["mail"];?></p>
+    <p>Password: <?php echo $_SESSION["pass"];?></p>
+
 
   </section>
 

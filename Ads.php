@@ -1,3 +1,7 @@
+<?php
+session_start();
+include('PHP/Get_Ads.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +16,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css'>
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-<?php
-session_start();
-$_SESSION["user"] = $user;
-?>
+
 </head>
 <header class="page-header" role="banner">
   <a id="log_out" href="login.html">
@@ -24,7 +25,7 @@ $_SESSION["user"] = $user;
 </header>
    <section id="sidebar">
      <ul id="list" class="collection-view scroll-view">
-       <li><a href="index.php">Home</a></li>
+       <li><a  href="index.php">Home</a></li>
        <li><a  href="Your_Ads.php">Your Ads</a></li>
        <li><a  href="Balance.php">Balance</a></li>
        <li><a  href="User.php">User Info</a></li>
@@ -38,17 +39,17 @@ $_SESSION["user"] = $user;
      </ul>
   </section>
 
-  <section id="main-content">
+  <section id="main-content" style="width: 45%; float: right;">
 
     <div id="ads">
-    <a href="../Project/Pics/Eintracht.png" title="Eintracht" data-gallery="">
-    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
-    <a href="../Project/Pics/Bayern.png" title="Bayern" data-gallery="">
-    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
-    <a href="../Project/Pics/United.jpg" title="United" data-gallery="">
-    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
-    <a href="../Project/Pics/Crystal.jpg" title="Crystal" data-gallery="">
-    <img style="width: 65px; height: 65px; margin-right: 15px;" src="../Project/Pics/Eintracht.png"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[0] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[1] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[2] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[3] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[4] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[5] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[6] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array[7] ?>"></a>
 
   </section>
 

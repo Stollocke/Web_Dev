@@ -1,5 +1,6 @@
 <?php
-//session_start();
+session_start();
+$user_now = $_SESSION["user"];
 ini_set("display_errors",1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
@@ -14,15 +15,14 @@ if (mysqli_connect_errno())
 	echo "Failed to connect: " .mysqli_connect_error();
 }
 
-$user = $_SESSION['user'];
-
-$sql="SELECT Balance FROM Web_User WHERE Username = '$user'";
-$result = mysqli_query($conn, $sql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-			$balance = $row['Balance'];
-		  $_SESSION["balance"] = $balance;
-		}
+$sql = "UPDATE Web_User SET Balance = Balance + '$_POST[Balance]' WHERE Username = '$user_now'";
+if (!mysqli_query($conn,$sql))
+{
+	die('Error: ' .mysqli_error($conn));
+}else{
+  include(Balance_get.php);
+  header('Location: ../Balance.php');
 }
+
 mysqli_close($conn);
 ?>

@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 ini_set("display_errors",1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
@@ -13,16 +13,28 @@ if (mysqli_connect_errno())
 {
 	echo "Failed to connect: " .mysqli_connect_error();
 }
-
 $user = $_SESSION['user'];
 
-$sql="SELECT Balance FROM Web_User WHERE Username = '$user'";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT ID FROM Web_User WHERE Username = '$user'";
+$result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-			$balance = $row['Balance'];
-		  $_SESSION["balance"] = $balance;
-		}
+      $ID = $row['ID'];
+    }
+  }
+
+
+$sql = "INSERT INTO Web_Ads_Uploaded (Name, User_ID, Price_Buy, File_Name)
+VALUES
+('$_POST[Name]','$ID','$_POST[Price_Buy]','$_POST[File_Name]')";
+
+if (!mysqli_query($conn,$sql))
+{
+	die('Error: ' .mysqli_error($conn));
+}else{
+  header('Location: ../Your_Ads.php');
 }
+
 mysqli_close($conn);
 ?>

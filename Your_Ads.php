@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('PHP/Get_Ads.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,7 @@ session_start();
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' type='text/css'>
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
 </head>
 <header class="page-header" role="banner">
   <a id="log_out" href="login.html">
@@ -23,7 +25,7 @@ session_start();
 </header>
    <section id="sidebar">
      <ul id="list" class="collection-view scroll-view">
-       <li><a href="index.php">Home</a></li>
+       <li><a  href="index.php">Home</a></li>
        <li><a  href="Your_Ads.php">Your Ads</a></li>
        <li><a  href="Balance.php">Balance</a></li>
        <li><a  href="User.php">User Info</a></li>
@@ -39,7 +41,22 @@ session_start();
 
   <section id="main-content">
 
-    <p>Welcome</p>
+    <h1 id="login">Upload Ad</h1>
+    <form id="form" action="PHP/Upload_Ads.php" method="POST">
+      Name: <input type="text" name="Name">
+      Price_Buy: <input type="text" name="Price_Buy">
+      File Name: <input type="text" name="File_Name">
+      <input type="submit">
+    </form>
+
+    <div id="ads" style="margin-top: 20px;">
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array_user[0] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array_user[1] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array_user[2] ?>"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="<?php echo $file_array_user[3] ?>"></a>
+    <!-- <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="../Web_Dev/Pics/Celtic.jpg"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="../Web_Dev/Pics/Crystal.jpg"></a>
+    <a><img style="width: 65px; height: 65px; margin-right: 15px;" src="../Web_Dev/Pics/Liverpool.jpg"></a> -->
 
   </section>
 
